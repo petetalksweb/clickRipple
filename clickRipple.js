@@ -4,6 +4,7 @@ var pixelsToTop;
 var pixelsToLeft;
 var width;
 var height;
+var maxDimension;
 
 function setupVariables(event, triggeredElement) {
     clickX = event.pageX;
@@ -12,6 +13,7 @@ function setupVariables(event, triggeredElement) {
     pixelsToLeft = triggeredElement.offsetLeft;
     width = triggeredElement.offsetWidth;
     height = triggeredElement.offsetHeight;
+    maxDimension = Math.max(width, height);
 }
 
 function setupClickRipple() {
@@ -21,11 +23,11 @@ function setupClickRipple() {
             setupVariables(event, this);
             var rippleSpan = document.createElement('span');
             rippleSpan.className = 'clickRippleSpan';
-            rippleSpan.style.top = clickY - Math.max(width, height) - pixelsToTop + 'px';
-            rippleSpan.style.left = clickX - Math.max(width, height) - pixelsToLeft + 'px';
-            rippleSpan.style.minWidth = Math.max(width, height) * 2 + 'px';
-            rippleSpan.style.minHeight = Math.max(width, height) * 2 + 'px';
-            rippleSpan.style.transition = 'all ' + (Math.max(width, height) * 2) / 250 + 's ease-in';
+            rippleSpan.style.top = clickY - maxDimension - pixelsToTop + 'px';
+            rippleSpan.style.left = clickX - maxDimension - pixelsToLeft + 'px';
+            rippleSpan.style.minWidth = maxDimension * 2 + 'px';
+            rippleSpan.style.minHeight = maxDimension * 2 + 'px';
+            rippleSpan.style.transition = 'all ' + (maxDimension * 2) / 250 + 's ease-in';
             this.appendChild(rippleSpan);
             requestAnimationFrame(function() {
                 rippleSpan.className += ' ripple';
