@@ -23,7 +23,7 @@ function clickRipple(event) {
         rippleSpan.style.left = clickX - maxDimension - pixelsToLeft + 'px';
         rippleSpan.style.minWidth = maxDimension * 2 + 'px';
         rippleSpan.style.minHeight = maxDimension * 2 + 'px';
-        rippleSpan.style.transition = 'all ' + (maxDimension * 2) / pps + 's ease-in';
+        rippleSpan.style.transitionDuration = (maxDimension * 2) / pps + 's';
         this.appendChild(rippleSpan);
         requestAnimationFrame(function() {
             rippleSpan.className += ' ripple';

@@ -9,6 +9,8 @@ button {
     border-radius: 50%;
     transform: scale(0);
     opacity: .5;
+    transition-property: all;
+    transition-timing-function: ease-in;
 }
 .ripple {
     transform: scale(2);
