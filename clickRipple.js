@@ -1,10 +1,15 @@
 var pps = 250; // pixels per second
-
+var rippleColor = 'white';
 
 function setupClickRipple(options) {
     var rippleElements = document.getElementsByClassName('clickRipple');
-    if(options && options.velocity && typeof options.velocity === 'number') {
-        pps = options.velocity;
+    if(options) {
+        if(options.velocity && typeof options.velocity === 'number') {
+            pps = options.velocity;
+        }
+        if(options.color) {
+            rippleColor = options.color;
+        }
     }
     for(rippleElement of rippleElements) {
         rippleElement.addEventListener('mouseup', clickRipple);
@@ -24,6 +29,7 @@ function clickRipple(event) {
         rippleSpan.style.left = clickX - maxDimension - pixelsToLeft + 'px';
         rippleSpan.style.minWidth = maxDimension * 2 + 'px';
         rippleSpan.style.minHeight = maxDimension * 2 + 'px';
+        rippleSpan.style.backgroundColor = rippleColor;
         rippleSpan.style.transitionDuration = (maxDimension * 2) / pps + 's';
         this.appendChild(rippleSpan);
         requestAnimationFrame(function() {
