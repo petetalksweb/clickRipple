@@ -8,6 +8,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="clickRipple.css">
+    <link rel="stylesheet" href="example.css">
     <script src="clickRipple.js"></script>
 </head>
 <body>
@@ -31,8 +32,29 @@
 
 <!-- Deemphasize a button by making it look like a link while maintaining button behavior -->
 <button type="button" class="btn btn-link clickRipple">Link</button>
+
+<div class="example exampleDiv clickRipple">
+    A div
+</div>
+
+<span class="example exampleSpan clickRipple">
+    A span
+</span>
+
+<div class="example exampleDiv clickRipple">
+    <span class="exampleSpan">
+        A span inside a div
+    </span>
+</div>
+
+<span class="example exampleSpan clickRipple">
+    <div class="exampleDiv">
+        A div inside a span
+    </div>
+</span>
+
 <script>
-    setupClickRipple(50);
+    setupClickRipple();
 </script>
 </body>
 </html>

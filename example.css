@@ -1,0 +1,14 @@
+.example{
+    width: 100px;
+    height: 100px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.exampleDiv {
+    background-color: #2ecc71;
+}
+.exampleSpan {
+    background-color: #e74c3c;
+}
