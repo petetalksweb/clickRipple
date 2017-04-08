@@ -1,0 +1,1 @@
+.clickRipple{overflow:hidden;position:relative}.clickRippleSpan{display:block;position:absolute;border-radius:50%;transform:scale(0);opacity:.75;transition-property:all;transition-timing-function:ease-in}.ripple{transform:scale(2);opacity:0}
