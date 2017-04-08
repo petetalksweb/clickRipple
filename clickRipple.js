@@ -1,8 +1,8 @@
 function setupClickRipple() {
-    var buttons = document.getElementsByTagName('button');
+    var rippleElements = document.getElementsByClassName('clickRipple');
 
-    for(button of buttons) {
-        button.addEventListener('mouseup', function(event) {
+    for(rippleElement of rippleElements) {
+        rippleElement.addEventListener('mouseup', function(event) {
             var clickX = event.pageX;
             var clickY = event.pageY;
             var pixelsToTop = this.offsetTop;
@@ -10,13 +10,12 @@ function setupClickRipple() {
             var width = this.offsetWidth;
             var height = this.offsetHeight;
             var rippleSpan = document.createElement('span');
-            rippleSpan.className = 'clickRipple';
+            rippleSpan.className = 'clickRippleSpan';
             rippleSpan.style.top = clickY - Math.max(width, height) - pixelsToTop + 'px';
             rippleSpan.style.left = clickX - Math.max(width, height) - pixelsToLeft + 'px';
             rippleSpan.style.minWidth = Math.max(width, height) * 2 + 'px';
             rippleSpan.style.minHeight = Math.max(width, height) * 2 + 'px';
             rippleSpan.style.transition = 'all ' + (Math.max(width, height) * 2) / 250 + 's ease-in';
-            this.tr
             this.appendChild(rippleSpan);
             requestAnimationFrame(function() {
                 rippleSpan.className += ' ripple';

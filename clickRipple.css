@@ -2,7 +2,7 @@ button {
     overflow: hidden;
     position: relative;
 }
-.clickRipple {
+.clickRippleSpan {
     display: block;
     background-color: white;
     position: absolute;
