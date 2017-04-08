@@ -1,9 +1,10 @@
 var pps = 250; // pixels per second
 
-function setupClickRipple(velocity) {
+
+function setupClickRipple(options) {
     var rippleElements = document.getElementsByClassName('clickRipple');
-    if(typeof velocity === 'number') {
-        pps = velocity;
+    if(options && options.velocity && typeof options.velocity === 'number') {
+        pps = options.velocity;
     }
     for(rippleElement of rippleElements) {
         rippleElement.addEventListener('mouseup', clickRipple);
