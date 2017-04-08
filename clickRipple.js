@@ -1,14 +1,24 @@
+var clickX;
+var clickY;
+var pixelsToTop;
+var pixelsToLeft;
+var width;
+var height;
+
+function setupVariables(event, triggeredElement) {
+    clickX = event.pageX;
+    clickY = event.pageY;
+    pixelsToTop = triggeredElement.offsetTop;
+    pixelsToLeft = triggeredElement.offsetLeft;
+    width = triggeredElement.offsetWidth;
+    height = triggeredElement.offsetHeight;
+}
+
 function setupClickRipple() {
     var rippleElements = document.getElementsByClassName('clickRipple');
-
     for(rippleElement of rippleElements) {
         rippleElement.addEventListener('mouseup', function(event) {
-            var clickX = event.pageX;
-            var clickY = event.pageY;
-            var pixelsToTop = this.offsetTop;
-            var pixelsToLeft = this.offsetLeft;
-            var width = this.offsetWidth;
-            var height = this.offsetHeight;
+            setupVariables(event, this);
             var rippleSpan = document.createElement('span');
             rippleSpan.className = 'clickRippleSpan';
             rippleSpan.style.top = clickY - Math.max(width, height) - pixelsToTop + 'px';
