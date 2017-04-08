@@ -1,4 +1,4 @@
-button {
+.clickRipple {
     overflow: hidden;
     position: relative;
 }
