@@ -1,0 +1,16 @@
+button {
+    overflow: hidden;
+    position: relative;
+}
+.clickRipple {
+    display: block;
+    background-color: white;
+    position: absolute;
+    border-radius: 50%;
+    transform: scale(0);
+    opacity: .5;
+}
+.ripple {
+    transform: scale(2);
+    opacity: 0;
+}
