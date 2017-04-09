@@ -31,15 +31,13 @@ function clickRipple(event) {
         rippleSpan.style.minHeight = maxDimension * 2 + 'px';
         rippleSpan.style.backgroundColor = rippleColor;
         rippleSpan.style.transitionDuration = (maxDimension * 2) / pps + 's';
-        rippleSpan.style.addEventListener('transitionend', function() {
-            
-        });
         this.appendChild(rippleSpan);
         requestAnimationFrame(function() {
             rippleSpan.className += ' ripple';
-            rippleSpan.style.addEventListener('transitionend', function() {
-                this.parentNode.removeChild(rippleSpan);
-            }.bind(this));
+            rippleSpan.addEventListener('transitionend', function() {
+                this.removeEventListener('transitionend', arguments.callee);
+                this.parentNode.removeChild(this);
+            });
         }.bind(this));
     }
 }
