@@ -34,9 +34,10 @@ function clickRipple(event) {
         this.appendChild(rippleSpan);
         requestAnimationFrame(function() {
             rippleSpan.className += ' ripple';
-            rippleSpan.addEventListener('transitionend', function() {
-                this.removeEventListener('transitionend', arguments.callee);
-                this.parentNode.removeChild(this);
+            rippleSpan.addEventListener('transitionend', function(event) {
+                if(event.propertyName === 'transform') {
+                    this.parentNode.removeChild(this);
+                }
             });
         }.bind(this));
     }
