@@ -31,12 +31,15 @@ function clickRipple(event) {
         rippleSpan.style.minHeight = maxDimension * 2 + 'px';
         rippleSpan.style.backgroundColor = rippleColor;
         rippleSpan.style.transitionDuration = (maxDimension * 2) / pps + 's';
+        rippleSpan.style.addEventListener('transitionend', function() {
+            
+        });
         this.appendChild(rippleSpan);
         requestAnimationFrame(function() {
             rippleSpan.className += ' ripple';
-            setTimeout(function() {
-                this.removeChild(rippleSpan);
-            }.bind(this),((maxDimension * 2) / pps) * 1000);
+            rippleSpan.style.addEventListener('transitionend', function() {
+                this.parentNode.removeChild(rippleSpan);
+            }.bind(this));
         }.bind(this));
     }
 }
