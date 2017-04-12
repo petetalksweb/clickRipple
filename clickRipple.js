@@ -42,11 +42,13 @@ function clickRipple(event) {
 function clickFade(event) {
     if(event) {
         var rippleSpan = this.getElementsByClassName('ripple')[0];
-        rippleSpan.className += ' fade';
-        rippleSpan.addEventListener('transitionend', function(event) {
-            if(event.propertyName === 'opacity') {
-                this.parentNode.removeChild(this);
-            }
-        });
+        if(rippleSpan) {
+            rippleSpan.className += ' fade';
+            rippleSpan.addEventListener('transitionend', function(event) {
+                if(event.propertyName === 'opacity' && this.parentNode) {
+                    this.parentNode.removeChild(this);
+                }
+            });
+        }
     }
 }
