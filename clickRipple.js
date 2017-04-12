@@ -13,7 +13,8 @@ function setupClickRipple(options) {
     }
     for(rippleElement of rippleElements) {
         rippleElement.addEventListener('mousedown', clickRipple);
-        rippleElement.addEventListener('mouseup', clickFade)
+        rippleElement.addEventListener('mouseup', clickFade);
+        rippleElement.addEventListener('mouseout', clickFade);
     }
 }
 
