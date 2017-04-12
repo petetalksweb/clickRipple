@@ -12,7 +12,8 @@ function setupClickRipple(options) {
         }
     }
     for(rippleElement of rippleElements) {
-        rippleElement.addEventListener('mouseup', clickRipple);
+        rippleElement.addEventListener('mousedown', clickRipple);
+        rippleElement.addEventListener('mouseup', clickFade)
     }
 }
 
@@ -34,11 +35,17 @@ function clickRipple(event) {
         this.appendChild(rippleSpan);
         requestAnimationFrame(function() {
             rippleSpan.className += ' ripple';
-            rippleSpan.addEventListener('transitionend', function(event) {
-                if(event.propertyName === 'transform') {
-                    this.parentNode.removeChild(this);
-                }
-            });
-        }.bind(this));
+        });
+    }
+}
+function clickFade(event) {
+    if(event) {
+        var rippleSpan = this.getElementsByClassName('ripple')[0];
+        rippleSpan.className += ' fade';
+        rippleSpan.addEventListener('transitionend', function(event) {
+            if(event.propertyName === 'opacity') {
+                this.parentNode.removeChild(this);
+            }
+        });
     }
 }

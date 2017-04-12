@@ -13,5 +13,7 @@
 }
 .ripple {
     transform: scale(2);
+}
+.fade {
     opacity: 0;
 }
