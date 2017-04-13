@@ -36,7 +36,7 @@ function clickRipple(event) {
 function clickFade(event) {
     if(event) {
         var rippleSpan = this.getElementsByClassName('ripple')[0];
-        if(rippleSpan) {
+        if(rippleSpan && rippleSpan.className.indexOf('fade') < 0) {
             rippleSpan.className += ' fade';
             rippleSpan.addEventListener('transitionend', function(event) {
                 if(event.propertyName === 'opacity' && this.parentNode) {
