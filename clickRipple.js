@@ -20,13 +20,13 @@ function setupClickRipple(options) {
 
 function clickRipple(event) {
     if(event) {
-        var clickX = event.pageX;
-        var clickY = event.pageY;
-        var pixelsToTop = this.offsetTop;
-        var pixelsToLeft = this.offsetLeft;
-        var maxDimension = Math.max(this.offsetWidth, this.offsetHeight);
         deletePreviousRipples(this);
-        var rippleSpan = generateRippleSpan(clickX, clickY, pixelsToTop, pixelsToLeft, maxDimension);
+        var rippleSpan = generateRippleSpan(event.pageX, 
+            event.pageY, 
+            this.offsetTop, 
+            this.offsetLeft, 
+            Math.max(this.offsetWidth, this.offsetHeight)
+        );
         this.appendChild(rippleSpan);
         requestAnimationFrame(function() {
             rippleSpan.className += ' ripple';
