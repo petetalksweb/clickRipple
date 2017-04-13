@@ -26,14 +26,7 @@ function clickRipple(event) {
         var pixelsToLeft = this.offsetLeft;
         var maxDimension = Math.max(this.offsetWidth, this.offsetHeight);
         deletePreviousRipples(this);
-        var rippleSpan = document.createElement('span');
-        rippleSpan.className = 'clickRippleSpan';
-        rippleSpan.style.top = clickY - maxDimension - pixelsToTop + 'px';
-        rippleSpan.style.left = clickX - maxDimension - pixelsToLeft + 'px';
-        rippleSpan.style.minWidth = maxDimension * 2 + 'px';
-        rippleSpan.style.minHeight = maxDimension * 2 + 'px';
-        rippleSpan.style.backgroundColor = rippleColor;
-        rippleSpan.style.transitionDuration = (maxDimension * 2) / pps + 's';
+        var rippleSpan = generateRippleSpan(clickX, clickY, pixelsToTop, pixelsToLeft, maxDimension);
         this.appendChild(rippleSpan);
         requestAnimationFrame(function() {
             rippleSpan.className += ' ripple';
@@ -52,6 +45,17 @@ function clickFade(event) {
             });
         }
     }
+}
+function generateRippleSpan(clickX, clickY, pixelsToTop, pixelsToLeft, maxDimension) {
+    var rippleSpan = document.createElement('span');
+    rippleSpan.className = 'clickRippleSpan';
+    rippleSpan.style.top = clickY - maxDimension - pixelsToTop + 'px';
+    rippleSpan.style.left = clickX - maxDimension - pixelsToLeft + 'px';
+    rippleSpan.style.minWidth = maxDimension * 2 + 'px';
+    rippleSpan.style.minHeight = maxDimension * 2 + 'px';
+    rippleSpan.style.backgroundColor = rippleColor;
+    rippleSpan.style.transitionDuration = (maxDimension * 2) / pps + 's';
+    return rippleSpan;
 }
 function deletePreviousRipples(button) {
     var previousRipples = button.getElementsByClassName('clickRippleSpan');
