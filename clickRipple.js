@@ -11,10 +11,10 @@ function setupClickRipple(options) {
             rippleColor = options.color;
         }
     }
-    for(rippleElement of rippleElements) {
-        rippleElement.addEventListener('mousedown', clickRipple);
-        rippleElement.addEventListener('mouseup', clickFade);
-        rippleElement.addEventListener('mouseout', clickFade);
+    for(var i = 0; i < rippleElements.length; i++) {
+        rippleElements[i].addEventListener('mousedown', clickRipple);
+        rippleElements[i].addEventListener('mouseup', clickFade);
+        rippleElements[i].addEventListener('mouseout', clickFade);
     }
 }
 
