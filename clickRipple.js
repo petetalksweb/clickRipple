@@ -25,6 +25,10 @@ function clickRipple(event) {
         var pixelsToTop = this.offsetTop;
         var pixelsToLeft = this.offsetLeft;
         var maxDimension = Math.max(this.offsetWidth, this.offsetHeight);
+        var previousRipples = this.getElementsByClassName('clickRippleSpan');
+        if(previousRipples[0]) {
+            previousRipples[0].parentNode.removeChild(previousRipples[0]);
+        }
         var rippleSpan = document.createElement('span');
         rippleSpan.className = 'clickRippleSpan';
         rippleSpan.style.top = clickY - maxDimension - pixelsToTop + 'px';
