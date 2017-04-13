@@ -33,6 +33,7 @@ function clickRipple(event) {
         });
     }
 }
+
 function clickFade(event) {
     if(event) {
         var rippleSpan = this.getElementsByClassName('ripple')[0];
@@ -46,6 +47,7 @@ function clickFade(event) {
         }
     }
 }
+
 function generateRippleSpan(clickX, clickY, pixelsToTop, pixelsToLeft, maxDimension) {
     var rippleSpan = document.createElement('span');
     rippleSpan.className = 'clickRippleSpan';
@@ -57,6 +59,7 @@ function generateRippleSpan(clickX, clickY, pixelsToTop, pixelsToLeft, maxDimens
     rippleSpan.style.transitionDuration = (maxDimension * 2) / pps + 's';
     return rippleSpan;
 }
+
 function deletePreviousRipples(button) {
     var previousRipples = button.getElementsByClassName('clickRippleSpan');
     if(previousRipples[0]) {
