@@ -18,7 +18,6 @@ function setupClickRipple(options) {
 
 function clickRipple(event) {
     if(event) {
-        // deletePreviousRipples(this);
         var rippleSpan = generateRippleSpan(event.pageX, 
             event.pageY, 
             this.offsetTop, 
