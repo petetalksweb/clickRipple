@@ -27,10 +27,12 @@ function clickRipple(event) {
         this.appendChild(rippleSpan);
         requestAnimationFrame(function() {
             rippleSpan.className += ' ripple';
-            this.addEventListener('mouseup', function() {
+            this.addEventListener('mouseup', function handler() {
+                this.removeEventListener('mouseup', handler);
                 clickFade(event, rippleSpan)
             });
-            this.addEventListener('mouseout', function() {
+            this.addEventListener('mouseout', function handler() {
+                this.removeEventListener('mouseout', handler);
                 clickFade(event, rippleSpan)
             });
         });
