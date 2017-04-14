@@ -13,14 +13,12 @@ function setupClickRipple(options) {
     }
     for(var i = 0; i < rippleElements.length; i++) {
         rippleElements[i].addEventListener('mousedown', clickRipple);
-        rippleElements[i].addEventListener('mouseup', clickFade);
-        rippleElements[i].addEventListener('mouseout', clickFade);
     }
 }
 
 function clickRipple(event) {
     if(event) {
-        deletePreviousRipples(this);
+        // deletePreviousRipples(this);
         var rippleSpan = generateRippleSpan(event.pageX, 
             event.pageY, 
             this.offsetTop, 
@@ -30,21 +28,24 @@ function clickRipple(event) {
         this.appendChild(rippleSpan);
         requestAnimationFrame(function() {
             rippleSpan.className += ' ripple';
+            this.addEventListener('mouseup', function() {
+                clickFade(event, rippleSpan)
+            });
+            this.addEventListener('mouseout', function() {
+                clickFade(event, rippleSpan)
+            });
         });
     }
 }
 
-function clickFade(event) {
+function clickFade(event, rippleSpan) {
     if(event) {
-        var rippleSpan = this.getElementsByClassName('ripple')[0];
-        if(rippleSpan && rippleSpan.className.indexOf('fade') < 0) {
-            rippleSpan.className += ' fade';
-            rippleSpan.addEventListener('transitionend', function(event) {
-                if(event.propertyName === 'opacity' && this.parentNode) {
-                    this.parentNode.removeChild(this);
-                }
-            });
-        }
+        rippleSpan.className += ' fade';
+        rippleSpan.addEventListener('transitionend', function(event) {
+            if(event.propertyName === 'opacity' && this.parentNode) {
+                this.parentNode.removeChild(this);
+            }
+        });
     }
 }
 
@@ -58,11 +59,4 @@ function generateRippleSpan(clickX, clickY, pixelsToTop, pixelsToLeft, maxDimens
     rippleSpan.style.backgroundColor = rippleColor;
     rippleSpan.style.transitionDuration = (maxDimension * 2) / pps + 's';
     return rippleSpan;
-}
-
-function deletePreviousRipples(button) {
-    var previousRipples = button.getElementsByClassName('clickRippleSpan');
-    if(previousRipples[0]) {
-        previousRipples[0].parentNode.removeChild(previousRipples[0]);
-    }
 }
